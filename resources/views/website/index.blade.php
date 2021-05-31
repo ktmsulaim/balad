@@ -1,42 +1,25 @@
 @extends('layouts.website', ['pageTitle' => 'Home'])
 
 @section('content')
-    <section id="slider" class="slider-element slider-parallax swiper_wrapper vh-75">
+    {{-- <section id="slider" class="slider-element slider-parallax swiper_wrapper vh-75">
         <div class="slider-inner">
 
             <div class="swiper-container swiper-parent">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide dark">
-                        <div class="container">
-                            <div class="slider-caption slider-caption-center">
-                                <h2 data-animate="fadeInUp">Welcome to Balad</h2>
-                                <p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">International
-                                    Institute of Research and Training</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide-bg" style="background-image: url('images/slide1.jpg');"></div>
+                    <div class="swiper-slide ">
+                        <div class="swiper-slide-bg" style="background-image: url('images/slide-1.jpg');"></div>
                     </div>
-                    <div class="swiper-slide dark">
-                        <div class="container">
-                            <div class="slider-caption slider-caption-center">
-                                <h2 data-animate="fadeInUp">Beautifully Flexible</h2>
-                                <p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">Looks beautiful &amp;
-                                    ultra-sharp on Retina Screen Displays. Powerful Layout with Responsive functionality
-                                    that can be adapted to any screen size.</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide-bg" style="background-image: url('images/slide1.jpg');"></div>
+                    <div class="swiper-slide ">
+                        <div class="swiper-slide-bg" style="background-image: url('images/slide-2.jpg');"></div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="container">
-                            <div class="slider-caption">
-                                <h2 data-animate="fadeInUp">Great Performance</h2>
-                                <p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">You'll be surprised to
-                                    see the Final Results of your Creation &amp; would crave for more.</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide-bg"
-                            style="background-image: url('images/slide3.jpg'); background-position: center top;"></div>
+                    <div class="swiper-slide ">
+                        <div class="swiper-slide-bg" style="background-image: url('images/slide-3.jpg');"></div>
+                    </div>
+                    <div class="swiper-slide ">
+                        <div class="swiper-slide-bg" style="background-image: url('images/slide-4.jpg');"></div>
+                    </div>
+                    <div class="swiper-slide ">
+                        <div class="swiper-slide-bg" style="background-image: url('images/slide-5.jpg');"></div>
                     </div>
                 </div>
                 <div class="slider-arrow-left"><i class="icon-angle-left"></i></div>
@@ -45,6 +28,21 @@
                     <div class="slide-number-current"></div><span>/</span>
                     <div class="slide-number-total"></div>
                 </div>
+            </div>
+
+        </div>
+    </section> --}}
+    <section id="slider" class="slider-element h-auto bottommargin-lg" style="background-color: #222;">
+        <div class="slider-inner">
+
+            <div class="owl-carousel carousel-widget" data-margin="0" data-items="1" data-pagi="false" data-loop="true" data-animate-in="rollIn" data-speed="450" data-animate-out="rollOut" data-autoplay="5000">
+
+                <a href="#"><img src="images/slide-1.jpg" alt="Slider"></a>
+                <a href="#"><img src="images/slide-2.jpg" alt="Slider"></a>
+                <a href="#"><img src="images/slide-3.jpg" alt="Slider"></a>
+                <a href="#"><img src="images/slide-4.jpg" alt="Slider"></a>
+                <a href="#"><img src="images/slide-5.jpg" alt="Slider"></a>
+
             </div>
 
         </div>
