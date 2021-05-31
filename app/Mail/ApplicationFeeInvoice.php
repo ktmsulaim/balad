@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class WelcomeMailWithInvoice extends Mailable
+class ApplicationFeeInvoice extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,8 +30,8 @@ class WelcomeMailWithInvoice extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.welcome', ['payment' => $this->payment])
-        ->subject('Welcome to Aksharam International Malayalam Academy')
+        return $this->markdown('email.application_fee', ['payment' => $this->payment])
+        ->subject('#invoice' . $this->payment->id . ' - Application Fee | Aksharam International Malayalam Academy')
         ->attachData($this->payment->getInvoice(), $this->payment->transaction_id . '.pdf', ['mime' => 'application/pdf']);
     }
 }

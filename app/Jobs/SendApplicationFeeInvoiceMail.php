@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Mail\WelcomeMail;
+use App\Mail\ApplicationFeeInvoice;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -11,19 +11,19 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 
-class SendWelcomeMail implements ShouldQueue
+class SendApplicationFeeInvoiceMail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $application;
+    protected $payment;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($application)
+    public function __construct($payment)
     {
-        $this->application = $application;
+        $this->payment = $payment;
     }
 
     /**
@@ -33,6 +33,6 @@ class SendWelcomeMail implements ShouldQueue
      */
     public function handle()
     {
-       Mail::to($this->application->email)->send(new WelcomeMail($this->application));
+        Mail::to($this->payment->application->email)->send(new ApplicationFeeInvoice($this->payment));
     }
 }

@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\FrontApplicationController;
 use App\Http\Controllers\WebsiteController;
-use App\Models\Payment;
+
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,9 +19,14 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', [WebsiteController::class, 'index'])->name('welcome');
+Route::get('/about', [WebsiteController::class, 'about'])->name('about');
+Route::get('/contact', [WebsiteController::class, 'contact'])->name('contact');
 
 Route::prefix('aksharam')->group(function(){
     Route::get('/features', [WebsiteController::class, 'exploreFeatures'])->name('aksharam.features');
+    Route::get('/privacy-policy', [WebsiteController::class, 'privacy_policy'])->name('privacy_policy');
+    Route::get('/terms-of-service', [WebsiteController::class, 'terms_of_service'])->name('terms_of_service');
+    Route::get('/refund-policy', [WebsiteController::class, 'refund_policy'])->name('refund_policy');
     
     Route::get('/apply', [WebsiteController::class, 'apply'])->name('aksharam.apply');
     Route::post('/apply', [FrontApplicationController::class, 'apply'])->name('aksharam.apply.post');
@@ -50,8 +56,5 @@ Route::prefix('admin')->group(function(){
     Auth::routes(['register' => false]);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
-
-
-Route::get('/mail', [FrontApplicationController::class, 'sendVerificationCode']);
 
 

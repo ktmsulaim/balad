@@ -3,17 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\SendApplicationEditMail;
+use App\Jobs\SendApplicationFeeInvoiceMail;
 use App\Jobs\SendWelcomeMail;
-use App\Mail\EditApplicationMail;
 use App\Models\Application;
 use App\Models\ApplicationVerificationCode;
 use App\Models\Payment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use Razorpay\Api\Api;
 
 class FrontApplicationController extends Controller
@@ -60,6 +57,8 @@ class FrontApplicationController extends Controller
         $application = Application::create($data);
 
         session(['application' => $application]);
+        
+        SendWelcomeMail::dispatch($application);
 
         return Redirect::route('aksharam.payment');
     }
@@ -106,7 +105,7 @@ class FrontApplicationController extends Controller
 
                 session()->forget('application');
 
-                SendWelcomeMail::dispatch($app_payment);
+                SendApplicationFeeInvoiceMail::dispatch($app_payment);
 
             } catch (\Exception $e) {
                 return Redirect::route('aksharam.payment.failed')->withErrors(['error' => $e->getMessage()]);

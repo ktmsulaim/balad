@@ -87,4 +87,29 @@ class WebsiteController extends Controller
 
         return view('website.payment.failed', ['application' => session('application')]);
     }
+
+    public function about()
+    {
+        return view('website.pages.about');
+    }
+
+    public function contact()
+    {
+        return view('website.pages.contact');
+    }
+   
+    public function privacy_policy()
+    {
+        return view('website.pages.privacy_policy');
+    }
+    
+    public function terms_of_service()
+    {
+        return view('website.pages.terms_of_service');
+    }
+    
+    public function refund_policy()
+    {
+        return view('website.pages.refund_policy');
+    }
 }

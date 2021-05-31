@@ -47,6 +47,7 @@
                             <p>The course fee is <b class="highlight">$100</b> per month. Once the students are admitted to the programme, we will share them with a user account. Login details will be sent to the registered mail of the candidates. By the way the payment gateway will be opened in their  user account and they can pay through it.</p>
                             <form action="{{ route('aksharam.payment.proccess') }}" method="post" class="m-0">
                                 @csrf
+                                {{-- <button id="rzp-button1" class="button button-rounded">Pay $100</button> --}}
                                 <script src="https://checkout.razorpay.com/v1/checkout.js"
                                             data-key="{{ env('RAZOR_KEY') }}"
                                             data-amount="10000"

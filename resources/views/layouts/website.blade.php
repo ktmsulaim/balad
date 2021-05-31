@@ -71,24 +71,24 @@
 									<a class="menu-link" href="{{ route('welcome') }}"><div>Home</div></a>
 								</li>
 								<li class="menu-item">
-									<a class="menu-link" href="javascript:void(0)"><div>About</div></a>
+									<a class="menu-link" href="{{ route('about') }}"><div>About</div></a>
 								</li>
 								<li class="menu-item">
 									<a class="menu-link" href="javascript:void(0)"><div>Policy</div></a>
 									<ul class="sub-menu-container">
 										<li class="menu-item">
-											<a class="menu-link" href="#"><div>Privacy Policy</div></a>
+											<a class="menu-link" href="{{ route('privacy_policy') }}"><div>Privacy Policy</div></a>
 										</li>
 										<li class="menu-item">
-											<a class="menu-link" href="#"><div>Terms of Service</div></a>
+											<a class="menu-link" href="{{ route('terms_of_service') }}"><div>Terms of Service</div></a>
 										</li>
 										<li class="menu-item">
-											<a class="menu-link" href="#"><div>Refund Policy</div></a>
+											<a class="menu-link" href="{{ route('refund_policy') }}"><div>Refund Policy</div></a>
 										</li>
 									</ul>
 								</li>
 								<li class="menu-item">
-									<a class="menu-link" href="javascript:void(0)"><div>Contact US</div></a>
+									<a class="menu-link" href="{{ route('contact') }}"><div>Contact US</div></a>
 								</li>
 							</ul>
 
