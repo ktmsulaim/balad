@@ -35,6 +35,6 @@ class EditApplicationMail extends Mailable
         return $this->markdown('email.edit_application', [
             'application' => $this->application,
             'code' => $this->code,
-        ]);
+        ])->subject('Verification code - Edit application');
     }
 }

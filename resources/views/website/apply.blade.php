@@ -25,7 +25,7 @@
 								<h5>Apply</h5>
 							</li>
 							<li class="col-sm-6 col-lg-4">
-								<a href="javascript:void(0)" class="i-circled i-bordered i-alt mx-auto">2</a>
+								<a href="{{ route('aksharam.payment') }}" class="i-circled i-bordered i-alt mx-auto">2</a>
 								<h5>Make Payment</h5>
 							</li>
                             <li class="col-sm-6 col-lg-4">

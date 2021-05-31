@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendApplicationEditMail;
+use App\Jobs\SendWelcomeMail;
 use App\Mail\EditApplicationMail;
 use App\Models\Application;
 use App\Models\ApplicationVerificationCode;
@@ -78,13 +80,13 @@ class FrontApplicationController extends Controller
 
         if(count($input) && !empty($payment_id)) {
             if($application->hasAdmissionFee()) {
-                $app_payement = $application->admissionFee();
+                $app_payment = $application->admissionFee();
 
-                if($app_payement->status == 1) {
+                if($app_payment->status == 1) {
                     return Redirect::route('aksharam.payment.success');
                 }
             } else {
-                $app_payement = $application->payments()->create([
+                $app_payment = $application->payments()->create([
                     'amount' => $payment['amount'],
                     'currency' => $payment['currency'],
                     'transaction_id' => $payment['id'],
@@ -99,10 +101,12 @@ class FrontApplicationController extends Controller
                     'currency' => $payment['currency'],
                 ]);
 
-                $app_payement->status = 1;
-                $app_payement->save();
+                $app_payment->status = 1;
+                $app_payment->save();
 
                 session()->forget('application');
+
+                SendWelcomeMail::dispatch($app_payment);
 
             } catch (\Exception $e) {
                 return Redirect::route('aksharam.payment.failed')->withErrors(['error' => $e->getMessage()]);
@@ -124,12 +128,12 @@ class FrontApplicationController extends Controller
         $application = Application::where('email', $request->email)->first();
 
         if($application) {
-            Mail::to($application->email)->send(new EditApplicationMail($application));
+            SendApplicationEditMail::dispatch($application);
         } else {
             return Redirect::back()->withErrors(['error' => 'Application with the provided email was not found!']);
         }
 
-        return Redirect::route('aksharam.application.verify');
+        return Redirect::route('aksharam.application.verify', ['application' => $application]);
 
     }
 

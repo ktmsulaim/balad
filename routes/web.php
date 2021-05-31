@@ -26,6 +26,7 @@ Route::prefix('aksharam')->group(function(){
     Route::post('/apply', [FrontApplicationController::class, 'apply'])->name('aksharam.apply.post');
     
     Route::get('/payment', [WebsiteController::class, 'payment'])->name('aksharam.payment');
+    Route::get('/payment/manual', [WebsiteController::class, 'payment_manual'])->name('aksharam.payment.manual');
     Route::post('/payment/proccess', [FrontApplicationController::class, 'proccessPayment'])->name('aksharam.payment.proccess');
     
     Route::get('/payment/sucess', [WebsiteController::class, 'success'])->name('aksharam.payment.success');

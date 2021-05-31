@@ -28,10 +28,33 @@ class WebsiteController extends Controller
     public function payment()
     {
         if(!session('application')) {
-            return Redirect::route('aksharam.apply')->withErrors(['error' => 'Fill the application form first']);
+            return Redirect::route('aksharam.payment.manual');
         }
 
-        return view('website.payment', ['application' => session('application')]);
+        $application = session('application');
+
+        if($application->hasAdmissionFee(1)) {
+            return Redirect::route('aksharam.payment.success', ['application' => $application]);
+        }
+
+        return view('website.payment', ['application' => $application]);
+    }
+
+    public function payment_manual(Request $request)
+    {
+        if($request->has('email') && $request->get('email')) {
+            $application = Application::where('email', $request->get('email'))->first();
+
+            if(!$application) {
+                return Redirect::back()->withErrors(['error' => "The application can't be found"]);
+            }
+
+            session(['application' => $application]);
+            
+            return Redirect::route('aksharam.payment');
+        }
+
+        return view('website.payment.manual');
     }
 
     public function success(Request $request)
