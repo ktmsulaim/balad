@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\EditApplicationMail;
 use App\Models\Application;
 use App\Models\ApplicationVerificationCode;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
@@ -83,7 +84,7 @@ class FrontApplicationController extends Controller
                     return Redirect::route('aksharam.payment.success');
                 }
             } else {
-                $app_payement = $application->payment()->create([
+                $app_payement = $application->payments()->create([
                     'amount' => $payment['amount'],
                     'currency' => $payment['currency'],
                     'transaction_id' => $payment['id'],
@@ -224,5 +225,16 @@ class FrontApplicationController extends Controller
         });
 
         return Redirect::route('aksharam.apply')->with('success', 'The application was updated!');
+    }
+
+    public function invoice(Request $request, $payment_id)
+    {
+        if(!$payment_id) {
+            return Redirect::back();
+        }
+
+        $payment = Payment::findOrFail($payment_id);
+
+        return $payment->getInvoice();
     }
 }

@@ -74,7 +74,18 @@
 									<a class="menu-link" href="javascript:void(0)"><div>About</div></a>
 								</li>
 								<li class="menu-item">
-									<a class="menu-link" href="javascript:void(0)"><div>Projects</div></a>
+									<a class="menu-link" href="javascript:void(0)"><div>Policy</div></a>
+									<ul class="sub-menu-container">
+										<li class="menu-item">
+											<a class="menu-link" href="#"><div>Privacy Policy</div></a>
+										</li>
+										<li class="menu-item">
+											<a class="menu-link" href="#"><div>Terms of Service</div></a>
+										</li>
+										<li class="menu-item">
+											<a class="menu-link" href="#"><div>Refund Policy</div></a>
+										</li>
+									</ul>
 								</li>
 								<li class="menu-item">
 									<a class="menu-link" href="javascript:void(0)"><div>Contact US</div></a>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FrontApplicationController;
 use App\Http\Controllers\WebsiteController;
+use App\Models\Payment;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,6 +29,7 @@ Route::prefix('aksharam')->group(function(){
     Route::post('/payment/proccess', [FrontApplicationController::class, 'proccessPayment'])->name('aksharam.payment.proccess');
     
     Route::get('/payment/sucess', [WebsiteController::class, 'success'])->name('aksharam.payment.success');
+    Route::get('/payment/{id}/invoice/', [FrontApplicationController::class, 'invoice'])->name('aksharam.payment.invoice');
     Route::get('/payment/failed', [WebsiteController::class, 'failed'])->name('aksharam.payment.failed');
     
     Route::get('/application/edit/requestcode', [FrontApplicationController::class, 'getVerification'])->name('aksharam.application.requestcode');
