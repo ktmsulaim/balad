@@ -87,7 +87,8 @@
                 <td colspan="2" style="font-size:14px;padding:50px 15px 0 15px;">
                     <strong style="display:block;margin:0 0 10px 0;">Regards</strong> Balad International Institute of
                     Research and Training
-                    <br> PMH Complex, Valamangalam, Pulpatta PO, Malappuram, Kerala, India<br><br>
+                    <br> PMH Complex, Valamangalam, Pulpatta PO, Malappuram, Kerala, India<br>
+                    676123<br>
                     <b>Phone:</b> +918592888585<br>
                     <b>Email:</b> info@balad.co.in
                 </td>

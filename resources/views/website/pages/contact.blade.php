@@ -82,6 +82,7 @@
                         <strong>Address:</strong><br>
                         PMH Complex, Valamangalam, Pulpatta PO<br>
                         Malappuram, Kerala India<br>
+                        676123
                     </address>
                     <abbr title="Phone Number"><strong>Phone:</strong></abbr> (+91) 8592888585<br>
                     <abbr title="Email Address"><strong>Email:</strong></abbr> info@balad.co.in

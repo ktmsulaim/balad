@@ -22,7 +22,7 @@ class CreateApplicationsTable extends Migration
             $table->string('dob');
             $table->string('age')->nullable();
             $table->string('name_of_guardian');
-            $table->string('relationship_with_guardian');
+            $table->string('relationship_with_guardian')->nullable();
             $table->string('email')->unique();
             $table->text('address_line1');
             $table->text('address_line2')->nullable();
