@@ -31,3 +31,18 @@ input.razorpay-payment-button:hover {
 	color: #FFF;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
+
+#about-front {
+	background: url('../images/bg-about.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.fbox-effect .fbox-icon i:hover, .fbox-effect:hover .fbox-icon i {
+    background-color: #0d6965;
+    color: #FFF;
+}
+
+.fbox-effect .fbox-icon i::after {
+	box-shadow: 0 0 0 2px #0d6965;
+}
