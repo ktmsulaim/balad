@@ -22,6 +22,7 @@ Route::get('/', [WebsiteController::class, 'index'])->name('welcome');
 Route::get('/about', [WebsiteController::class, 'about'])->name('about');
 Route::get('/contact', [WebsiteController::class, 'contact'])->name('contact');
 
+
 Route::prefix('aksharam')->group(function(){
     Route::get('/features', [WebsiteController::class, 'exploreFeatures'])->name('aksharam.features');
     Route::get('/privacy-policy', [WebsiteController::class, 'privacy_policy'])->name('privacy_policy');

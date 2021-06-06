@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -11,6 +12,11 @@ class Application extends Model
     use HasFactory;
 
     protected $guarded = [];
+    protected $time_preferences = [
+        1 => '6:45am to 7:30am',
+        2 => '2:45pm to 3:30pm',
+        3 => '8:30pm to 9:15pm'
+    ];
 
     public function hasPhoto()
     {
@@ -21,9 +27,36 @@ class Application extends Model
         return false;
     }
 
+    public function photo()
+    {
+        if($this->hasPhoto()) {
+            return Storage::url($this->photo);
+        } else {
+            return asset('images/man.svg');
+        }
+    }
+
     public function fullName()
     {
         return ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
+    }
+
+    public function getAge()
+    {
+        if($this->dob) {
+            $dob =  Carbon::createFromFormat('d-m-Y', $this->dob);
+
+            if(!$dob) {
+                return 'NULL';
+            }
+
+            return $dob->diff(Carbon::now())->format('%y Years');
+        }
+    }
+
+    public function getTimePreference()
+    {
+        return $this->time_preferences[$this->time_preference];
     }
 
     public function payments()
