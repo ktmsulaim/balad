@@ -44,7 +44,7 @@
                             Make payment securely with Razorpay
                         </div>
                         <div class="card-body">
-                            <p>The course fee is <b class="highlight">$100</b> per month. Once the students are admitted to the programme, we will share them with a user account. Login details will be sent to the registered mail of the candidates. By the way the payment gateway will be opened in their  user account and they can pay through it.</p>
+                            <p>Application procssing fee of USD100 for all students is Non-refundable</p>
                             <form action="{{ route('aksharam.payment.proccess') }}" method="post" class="m-0">
                                 @csrf
                                 {{-- <button id="rzp-button1" class="button button-rounded">Pay $100</button> --}}

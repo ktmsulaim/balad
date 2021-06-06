@@ -47,7 +47,7 @@
                         Congrats! Your payment was successfull
                     </div>
                     <div class="card-body">
-                        <p>Thank you for being part of Aksharam International Malayalam Academy. You payment was received and the transaction ID is: <b>{{ $payment->transaction_id }}</b></p>
+                        <p>Thank you for being part of Aksharam International Malayalam Academy. Your payment was received and the transaction ID is: <b>{{ $payment->transaction_id }}</b></p>
                         <p>We will send you a confirmation email with the payment invoice. Also, you can downlaod it from the link below.</p>
                         <div>
                             <a href="{{ route('aksharam.payment.invoice', ['id' => $payment->id]) }}" class="button button-rounded">Download Invoice</a>
