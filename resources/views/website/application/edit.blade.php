@@ -178,10 +178,9 @@
                                     <label for="time_preference">Time preference (IST) <span
                                             class="text-danger">*</span></label>
                                     <select name="time_preference" id="time_preference" class="form-control" required>
-                                        <option value="1">6:30am to 7:15am</option>
-                                        {{-- <option value="2">10:00am to 10:45am</option> --}}
-                                        <option value="3">2:45pm to 3:30am</option>
-                                        <option value="4">8:30pm to 9:15pm</option>
+                                        @foreach ((new \App\Models\Application)->time_preferences as $key => $tp)
+                                            <option value="{{ $key }}" {{ $application->time_preference == $key ? 'selected' : '' }}>{{ $tp }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
