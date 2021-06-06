@@ -31,7 +31,7 @@ class ApplicationFeeInvoice extends Mailable
     public function build()
     {
         return $this->markdown('email.application_fee', ['payment' => $this->payment])
-        ->subject('#invoice' . $this->payment->id . ' - Application Fee | Aksharam International Malayalam Academy')
+        ->subject('Offer of Admission for the Malayalam Basic Certificate Course')
         ->attachData($this->payment->getInvoice(), $this->payment->transaction_id . '.pdf', ['mime' => 'application/pdf']);
     }
 }

@@ -290,7 +290,12 @@
 
                         <div id="section-pricing" class="heading-block text-center border-bottom-0 page-section"
                             data-onepage-settings="{&quot;offset&quot;:100,&quot;speed&quot;:1250,&quot;easing&quot;:&quot;easeOutQuad&quot;}">
-                            <h2>Pricing Details</h2>
+                            <h2>Fee structure</h2>
+                            <span>The course fee is $100 per month. Once the students are admitted to
+                                the programme, we will share them with a user account. Login details
+                                will be sent to the registered mail of the candidates. By the way the
+                                payment gateway will be opened in their user account and they can pay
+                                through it.</span>
                         </div>
 
                         <div class="pricing-box pricing-extended row align-items-stretch mb-5 mx-0">
