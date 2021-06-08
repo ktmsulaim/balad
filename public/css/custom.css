@@ -46,3 +46,13 @@ input.razorpay-payment-button:hover {
 .fbox-effect .fbox-icon i::after {
 	box-shadow: 0 0 0 2px #0d6965;
 }
+
+ul.circle {
+	padding-left: 25px;
+	list-style: circle;
+}
+
+ul.alphabet {
+    list-style: lower-alpha;
+    padding-left: 20px;
+}
