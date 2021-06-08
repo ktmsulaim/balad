@@ -191,7 +191,7 @@
 
                    <div class="form-group">
                         <label for="photo">Photo</label>
-                        <input type="file" name="photo" id="photo" class="form-control-file" {{ !@$application || !@$application->hasPhoto() ? 'required' : '' }}>
+                        <input type="file" name="photo" id="photo" accept="image/*" class="form-control-file" {{ !@$application || !@$application->hasPhoto() ? 'required' : '' }}>
                    </div>
                    
                    <div class="form-group">
@@ -220,13 +220,11 @@
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/components/datepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components/select-boxes.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/components/bs-filestyle.css') }}">
 @endsection
 
 @section('scripts')
     <script src="{{ asset('js/components/datepicker.js') }}"></script>
     <script src="{{ asset('js/components/select-boxes.js') }}"></script>
-    <script src="{{ asset('js/components/bs-filestyle.js') }}"></script>
 @endsection
 
 @section('custom_js')
@@ -237,15 +235,5 @@ $('.component-datepicker.default').datepicker({
 
 $('#country').select2({
     data: window.countries
-})
-
-$('#photo').fileinput({
-    showUpload: false,
-    allowedFileTypes: ['image'],
-    maxFileSize: 1024,
-    @if ($application && $application->hasPhoto())
-        initialPreviewAsData: true,
-        initialPreview: "{{ Storage::url($application->photo) }}"
-    @endif
 })
 @endsection
