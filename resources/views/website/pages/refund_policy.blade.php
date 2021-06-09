@@ -30,6 +30,9 @@
                         <li>No refund - After fifth day of every month</li>
                     </ul>
                 </div>
+                <div class="mt-4">
+                    <p><b>Note:</b> It will take 5 -7 working days to process the refund and credit the amount to the customers' bank account.</p>
+                </div>
             </div>
         </div>
     </div>
