@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FrontApplicationController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\AdminController;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
@@ -55,7 +56,8 @@ Route::prefix('aksharam')->group(function(){
 
 Route::prefix('admin')->group(function(){
     Auth::routes(['register' => false]);
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    
+    Route::get('/', [AdminController::class, 'index'])->name('admin.indx');
 });
 
 
