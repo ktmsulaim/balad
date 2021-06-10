@@ -13,7 +13,12 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/plugins/fontawesome-free/css/all.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('assets/admin/css/adminlte.min.css')}}">
+    
+    @yield('css')
 
+    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" type="image/x-icon">
+
+    
     @yield('custom_styles')
 </head>
 
@@ -72,7 +77,7 @@
             <a href="{{ route('admin.indx') }}" class="brand-link">
                 <img src="{{ asset('img/logo.png') }}" alt="Balad Logo"
                     class="brand-image" style="opacity: .8">
-                <span class="brand-text font-weight-light">Admin</span>
+                <span class="brand-text font-weight-light">Admin Panel</span>
             </a>
 
             <!-- Sidebar -->
@@ -83,7 +88,7 @@
                         <img src="{{ asset('images/man.svg') }}" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="javascript:void(0)" class="d-block">Alexander Pierce</a>
+                        <a href="javascript:void(0)" class="d-block">{{ auth()->user()->name }}</a>
                     </div>
                 </div>
 
@@ -94,16 +99,15 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="{{ route('admin.indx') }}" class="nav-link">
+                            <a href="{{ route('admin.indx') }}" class="nav-link {{ Request::url() == route('admin.indx') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
-                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.applications.index') }}" class="nav-link {{ Request::url() == route('admin.applications.index') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Applicants
@@ -111,7 +115,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link {{ Request::url() == '' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-file-invoice"></i>
                                 <p>
                                     Payments
@@ -119,7 +123,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('logout.get') }}" class="nav-link">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
                                 <p>
                                     Logout
@@ -181,7 +185,14 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('assets/admin/js/adminlte.min.js') }}"></script>
 
-    @yield('custom_scripts')
+    @yield('js')
+
+    <script>
+        $(function(){
+            @yield('custom_scripts')
+        })
+    </script>
+
 </body>
 
 </html>

@@ -19,9 +19,36 @@ class Application extends Model
         3 => '8:30pm to 9:15pm'
     ];
 
+
+
+    public $data_columns = [
+        'columns' => ['id', 'photo', 'first_name', 'last_name', 'email', 'phone', 'gender', 'age'],
+        'searchable' => ['first_name', 'last_name', 'email'],
+        'render' => [
+            0 => ['key' => 'id', 'label' => '#', 'searchable' => false, 'orderable' => false],
+            1 => ['key' => 'photo', 'label' => 'Photo', 'searchable' => false, 'orderable' => false, 'render' => null],
+            2 => ['key' => 'first_name', 'label' => 'First Name'],
+            3 => ['key' => 'last_name', 'label' => 'Last Name'],
+            4 => ['key' => 'email', 'label' => 'Email'],
+            5 => ['key' => 'phone', 'label' => 'Phone', 'searchable' => false, 'orderable' => false],
+            6 => ['key' => 'gender', 'label' => 'Gender'],
+            7 => ['key' => 'age', 'label' => 'Age'],
+        ]
+    ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::retrieved(function ($model) {
+            $model->data_columns['render'][1]['render'] = '<img src="' . $model->photo() . '" width="40">';
+        });
+    }
+
+
     public function hasPhoto()
     {
-        if($this->photo && Storage::exists($this->photo)) {
+        if ($this->photo && Storage::exists($this->photo)) {
             return true;
         }
 
@@ -30,7 +57,7 @@ class Application extends Model
 
     public function photo()
     {
-        if($this->hasPhoto()) {
+        if ($this->hasPhoto()) {
             return Storage::url($this->photo);
         } else {
             return asset('images/man.svg');
@@ -44,10 +71,10 @@ class Application extends Model
 
     public function getAge()
     {
-        if($this->dob) {
+        if ($this->dob) {
             $dob =  Carbon::createFromFormat('d-m-Y', $this->dob);
 
-            if(!$dob) {
+            if (!$dob) {
                 return 'NULL';
             }
 
@@ -67,7 +94,7 @@ class Application extends Model
 
     public function hasAdmissionFee($status = null)
     {
-        if($status) {
+        if ($status) {
             return $this->payments()->exists() && $this->payments()->where(['type' => 1, 'status' => $status])->count() > 0;
         } else {
             return $this->payments()->exists() && $this->payments()->where(['type' => 1])->count() > 0;
@@ -76,12 +103,12 @@ class Application extends Model
 
     public function admissionFee($status = null)
     {
-        if($status) {
-            if($this->hasAdmissionFee()) {
+        if ($status) {
+            if ($this->hasAdmissionFee()) {
                 return $this->payments()->where(['type' => 1, 'status' => $status])->first();
             }
         } else {
-            if($this->hasAdmissionFee()) {
+            if ($this->hasAdmissionFee()) {
                 return $this->payments()->where(['type' => 1])->first();
             }
         }
@@ -94,7 +121,7 @@ class Application extends Model
 
     public function getCode()
     {
-        if($this->codes()->exists() && $this->codes()->where('status', 1)->count() > 0) {
+        if ($this->codes()->exists() && $this->codes()->where('status', 1)->count() > 0) {
             return $this->codes()->where('status', 1)->first()->code;
         } else {
             // check the code is exists
@@ -104,7 +131,7 @@ class Application extends Model
                 'code' => $code,
                 'status' => 1,
             ]);
-            
+
             return $code;
         }
     }

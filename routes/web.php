@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminApplicationsController;
 use App\Http\Controllers\FrontApplicationController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -56,8 +57,15 @@ Route::prefix('aksharam')->group(function(){
 
 Route::prefix('admin')->group(function(){
     Auth::routes(['register' => false]);
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout.get');
+
+    Route::middleware('auth')->group(function(){
+        Route::get('/', [AdminController::class, 'index'])->name('admin.indx');
+    });
+
+    Route::get('/applications', [AdminApplicationsController::class, 'index'])->name('admin.applications.index');
+    Route::get('/applications/{type}/list', [AdminApplicationsController::class, 'listApplications'])->name('admin.applications.list');
     
-    Route::get('/', [AdminController::class, 'index'])->name('admin.indx');
 });
 
 
