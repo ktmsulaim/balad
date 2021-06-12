@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Datatable;
 use App\Models\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminApplicationsController extends Controller
 {
@@ -32,5 +33,12 @@ class AdminApplicationsController extends Controller
     public function edit(Application $application)
     {
         return view('admin.applications.edit', ['application' => $application]);
+    }
+
+    public function update(Request $request, Application $application)
+    {
+        $application->update($request->all());
+
+        return Redirect::back()->with('success', 'The application has been updated');
     }
 }

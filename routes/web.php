@@ -67,6 +67,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/applications', [AdminApplicationsController::class, 'index'])->name('admin.applications.index');
     Route::get('/applications/export', [ApplicationsExportController::class, 'export'])->name('admin.applications.export');
     Route::get('/applications/{application}', [AdminApplicationsController::class, 'edit'])->name('admin.applications.edit');
+    Route::patch('/applications/{application}', [AdminApplicationsController::class, 'update'])->name('admin.applications.update');
     Route::get('/applications/{type}/list', [AdminApplicationsController::class, 'listApplications'])->name('admin.applications.list');
     
 });

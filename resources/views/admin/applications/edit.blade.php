@@ -1,14 +1,21 @@
 @extends('layouts.admin.app', ['title' => 'View application'])
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('assets/admin/plugins/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-md-8">
+            @include('components.admin.notification')
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">View application #{{ $application->id }}</h3>
+                    <h3 class="card-title">Application #{{ $application->id }}</h3>
                 </div>
                 <div class="card-body">
-                    <form action="" method="post"
+                    <form action="{{ route('admin.applications.update', $application->id) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
@@ -51,8 +58,8 @@
                                 <div class="form-group">
                                     <label for="dob">Date of birth <span class="text-danger">*</span></label>
                                     <input type="text" name="dob" value="{{ old('dob', $application->dob) }}"
-                                        class="form-control text-left component-datepicker default @error('username') error @enderror"
-                                        value="{{ old('dob') }}" placeholder="DD-MM-YYYY" required>
+                                        class="form-control text-left datepicker @error('username') error @enderror"
+                                        value="{{ old('dob') }}" data-toggle="datetimepicker" placeholder="DD-MM-YYYY" required>
                                 </div>
                             </div>
                         </div>
@@ -245,4 +252,26 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script src="{{ asset('assets/admin/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+    <script src="{{ asset('js/website-custom.js') }}"></script>
+@endsection
+
+@section('custom_scripts')
+
+$('.datepicker').datetimepicker({
+    autoclose: true,
+    format: 'DD-mm-yyyy'
+});
+
+$('#country').select2({
+    data: window.countries,
+})
+
+$('#country').val("{{$application->country}}");
+$('#country').trigger('change');
 @endsection
