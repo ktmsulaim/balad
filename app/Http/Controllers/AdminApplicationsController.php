@@ -19,13 +19,18 @@ class AdminApplicationsController extends Controller
         $status = $type == 'active' ? 1 : 0;
         
         $data = (new Datatable($model, 
-            $model->data_columns['columns'], // Columns
-            $model->data_columns['searchable'], // Searchable columns
+            $model->getDataColumns('partial'), // Columns
+            $model->getDataColumns('partial', 'searchable'), // Searchable columns
             ['status' => $status] // conditions
         ))->draw();
 
         echo $data;
 
         exit;
+    }
+
+    public function edit(Application $application)
+    {
+        return view('admin.applications.edit', ['application' => $application]);
     }
 }

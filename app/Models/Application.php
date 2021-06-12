@@ -19,33 +19,6 @@ class Application extends Model
         3 => '8:30pm to 9:15pm'
     ];
 
-
-
-    public $data_columns = [
-        'columns' => ['id', 'photo', 'first_name', 'last_name', 'email', 'phone', 'gender', 'age'],
-        'searchable' => ['first_name', 'last_name', 'email'],
-        'render' => [
-            0 => ['key' => 'id', 'label' => '#', 'searchable' => false, 'orderable' => false],
-            1 => ['key' => 'photo', 'label' => 'Photo', 'searchable' => false, 'orderable' => false, 'render' => null],
-            2 => ['key' => 'first_name', 'label' => 'First Name'],
-            3 => ['key' => 'last_name', 'label' => 'Last Name'],
-            4 => ['key' => 'email', 'label' => 'Email'],
-            5 => ['key' => 'phone', 'label' => 'Phone', 'searchable' => false, 'orderable' => false],
-            6 => ['key' => 'gender', 'label' => 'Gender'],
-            7 => ['key' => 'age', 'label' => 'Age'],
-        ]
-    ];
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::retrieved(function ($model) {
-            $model->data_columns['render'][1]['render'] = '<img src="' . $model->photo() . '" width="40">';
-        });
-    }
-
-
     public function hasPhoto()
     {
         if ($this->photo && Storage::exists($this->photo)) {
@@ -62,6 +35,11 @@ class Application extends Model
         } else {
             return asset('images/man.svg');
         }
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
     }
 
     public function fullName()
@@ -133,6 +111,31 @@ class Application extends Model
             ]);
 
             return $code;
+        }
+    }
+
+    public function getDataColumns($type, $key = 'columns')
+    {
+        $data = [
+            'columns' => ['id', 'photo', 'first_name', 'last_name', 'time_preference', 'email', 'phone', 'gender', 'age'],
+            'searchable' => ['first_name', 'last_name', 'email'],
+            'render' => [
+                ['key' => 'id', 'label' => '#', 'searchable' => false, 'orderable' => false],
+                ['key' => 'photo', 'label' => 'Photo', 'searchable' => false, 'orderable' => false],
+                ['key' => 'first_name', 'label' => 'First Name'],
+                ['key' => 'last_name', 'label' => 'Last Name'],
+                ['key' => 'time_preference', 'label' => 'Time preference'],
+                ['key' => 'email', 'label' => 'Email'],
+                ['key' => 'phone', 'label' => 'Phone', 'searchable' => false, 'orderable' => false],
+                ['key' => 'gender', 'label' => 'Gender'],
+                ['key' => 'age', 'label' => 'Age'],
+            ]
+        ];
+
+        if ($type == 'full') {
+            return $data;
+        } else {
+            return $data[$key];
         }
     }
 }

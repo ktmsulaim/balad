@@ -56,6 +56,11 @@ class FrontApplicationController extends Controller
 
         $application = Application::create($data);
 
+        $application->age = $application->getAge();
+        $application->save();
+
+        $application = $application->fresh();
+
         session(['application' => $application]);
         
         SendWelcomeMail::dispatch($application);
@@ -102,6 +107,9 @@ class FrontApplicationController extends Controller
 
                 $app_payment->status = 1;
                 $app_payment->save();
+
+                $application->status = 1;
+                $application->save();
 
                 session()->forget('application');
 

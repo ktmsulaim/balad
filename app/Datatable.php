@@ -93,15 +93,22 @@ class Datatable
         $data_arr = array();
 
         if($records) {
-            foreach ($records as $record) {
+            foreach ($records as $key => $record) {
                 // $data_arr[] = collect($this->columns)->map(function($column) use($record) {
                 //     return [
                 //         $column => $record[$column]
                 //     ];
                 // });
+                $obj = $this->model->find($record['id']);
                 $dat = [];
-                foreach ($this->columns as $key => $column) {
-                    $dat[$column] = $record[$column];
+                foreach ($this->columns as $column) {
+                    if($column == 'photo') {
+                        $dat[$column] = "<img src='{$obj->photo()}' width='40'>";
+                    } elseif($column == 'time_preference') {
+                        $dat[$column] = $obj->getTimePreference();
+                    } else {
+                        $dat[$column] = $record[$column];
+                    }
                 }
 
                 $data_arr[] = $dat;

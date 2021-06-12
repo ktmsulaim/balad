@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminApplicationsController;
 use App\Http\Controllers\FrontApplicationController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ApplicationsExportController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
@@ -64,6 +65,8 @@ Route::prefix('admin')->group(function(){
     });
 
     Route::get('/applications', [AdminApplicationsController::class, 'index'])->name('admin.applications.index');
+    Route::get('/applications/export', [ApplicationsExportController::class, 'export'])->name('admin.applications.export');
+    Route::get('/applications/{application}', [AdminApplicationsController::class, 'edit'])->name('admin.applications.edit');
     Route::get('/applications/{type}/list', [AdminApplicationsController::class, 'listApplications'])->name('admin.applications.list');
     
 });

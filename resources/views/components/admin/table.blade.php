@@ -33,30 +33,48 @@
 
 
 @section('custom_scripts')
-    const data = @json($columns)
+    const data = @json($columns);
+    const columns = Object.entries(data).map((item, i, array) => {
+        const data =  {
+            data: item[1]['key'],
+            'searchable': !item.searchable ? true : false,
+            'orderable': !item.orderable ? true : false,
+            'title': item[1]['label'],
+            'render': function(data, type, full, meta) {
+                if(Object.keys(item[1]).includes('render')) {
+                    return item[1]['render'];
+                } else {
+                    return data;
+                }
+            }
+        };
+
+        return data;
+    })
+
+    @if ($action['status'])    
+    // Action
+      columns.push({
+            data: 'id',
+            'searchable': false,
+            'orderable': false,
+            'title': 'Action',
+            'render': function(data, type, full, meta) {
+                @foreach ($action['links'] as $item => $link)
+                return `<a href="/admin/{{ $link }}/${data}"><span class="fa fa-edit"></span></a>`;
+                @endforeach
+            }
+        })  
+    @endif
 
     $('.table').DataTable({
         "processing": true,
         "serverSide": true,
         "ajax": "{{ $url }}",
-        "columns": Object.entries(data).map((item, i, array) => {
-            return {
-                data: item[1]['key'],
-                'searchable': !item.searchable ? true : false,
-                'orderable': !item.orderable ? true : false,
-                'title': item[1]['label'],
-                'render': function(data, type, full, meta) {
-                    if(Object.keys(item[1]).includes('render')) {
-                        return item[1]['render'];
-                    } else {
-                        return data;
-                    }
-                }
-            };
-        }),
+        columns,
         "paging": true,
-        "lengthChange": false,
-        "searching": false,
+        "lengthChange": true,
+        "searching": true,
         "ordering": true,
         "info": true,
         "autoWidth": false,
