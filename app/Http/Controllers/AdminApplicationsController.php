@@ -3,31 +3,45 @@
 namespace App\Http\Controllers;
 
 use App\Datatable;
+use App\DataTables\ApplicationsDataTable;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Yajra\DataTables\Facades\DataTables;
 
 class AdminApplicationsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.applications.index');
+        $type = 'active';
+        
+        if($request->has('type')) {
+            $type = $request->get('type');
+        }
+
+        return view('admin.applications.index', ['type' => $type]);
     }
 
-    public function listApplications($type = 'active')
+    public function listApplications(Request $request, $type = 'active')
     {
-        $model = new Application;
-        $status = $type == 'active' ? 1 : 0;
-        
-        $data = (new Datatable($model, 
-            $model->getDataColumns('partial'), // Columns
-            $model->getDataColumns('partial', 'searchable'), // Searchable columns
-            ['status' => $status] // conditions
-        ))->draw();
+        if($request->ajax()) {
+            $status = $type == 'active' ? 1 : 0;
+            $applications = Application::where('status', $status);
 
-        echo $data;
-
-        exit;
+            return DataTables::of($applications)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+                        return "<a href='".route('admin.applications.edit', ['application' => $row->id]) ."'><i class='fa fa-edit fa-fw'></i></a>";
+                    })
+                    ->editColumn('time_preference', function($user){
+                        return $user->getTimePreference();
+                    })
+                    ->editColumn('created_at', function($user){
+                        return $user->created_at->format('d F, Y');
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
     }
 
     public function edit(Application $application)

@@ -106,6 +106,8 @@ class Datatable
                         $dat[$column] = "<img src='{$obj->photo()}' width='40'>";
                     } elseif($column == 'time_preference') {
                         $dat[$column] = $obj->getTimePreference();
+                    } elseif($column == 'created_at') {
+                        $dat[$column] = $obj->created_at->format('d F, Y g:i A');
                     } else {
                         $dat[$column] = $record[$column];
                     }
@@ -113,6 +115,7 @@ class Datatable
 
                 $data_arr[] = $dat;
             }
+
         }
 
 

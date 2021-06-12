@@ -120,7 +120,6 @@ class Application extends Model
             'columns' => ['id', 'photo', 'first_name', 'last_name', 'time_preference', 'email', 'phone', 'gender', 'age'],
             'searchable' => ['first_name', 'last_name', 'email'],
             'render' => [
-                ['key' => 'id', 'label' => '#', 'searchable' => false, 'orderable' => false],
                 ['key' => 'photo', 'label' => 'Photo', 'searchable' => false, 'orderable' => false],
                 ['key' => 'first_name', 'label' => 'First Name'],
                 ['key' => 'last_name', 'label' => 'Last Name'],

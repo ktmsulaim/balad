@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/plugins/fontawesome-free/css/all.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('assets/admin/css/adminlte.min.css')}}">
+
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     
     @yield('css')
 
@@ -115,7 +117,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link {{ Request::url() == '' ? 'active' : '' }}">
+                            <a href="{{ route('admin.payments.index') }}" class="nav-link {{ Request::is('admin/payments*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-file-invoice"></i>
                                 <p>
                                     Payments
@@ -185,13 +187,12 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('assets/admin/js/adminlte.min.js') }}"></script>
 
+    <script src="{{ asset('js/admin.js') }}"></script>
+    <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
+
     @yield('js')
 
-    <script>
-        $(function(){
-            @yield('custom_scripts')
-        })
-    </script>
+   @stack('scripts')
 
 </body>
 

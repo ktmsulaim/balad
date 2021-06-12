@@ -6,6 +6,8 @@ use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApplicationsExportController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PaymentsExportController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -65,10 +67,14 @@ Route::prefix('admin')->group(function(){
     });
 
     Route::get('/applications', [AdminApplicationsController::class, 'index'])->name('admin.applications.index');
-    Route::get('/applications/export', [ApplicationsExportController::class, 'export'])->name('admin.applications.export');
+    Route::get('/applications/export/{type}', [ApplicationsExportController::class, 'export'])->name('admin.applications.export');
     Route::get('/applications/{application}', [AdminApplicationsController::class, 'edit'])->name('admin.applications.edit');
     Route::patch('/applications/{application}', [AdminApplicationsController::class, 'update'])->name('admin.applications.update');
     Route::get('/applications/{type}/list', [AdminApplicationsController::class, 'listApplications'])->name('admin.applications.list');
+
+    Route::get('/payments', [PaymentController::class, 'index'])->name('admin.payments.index');
+    Route::get('/payments/list', [PaymentController::class, 'listPayments'])->name('admin.payments.list');
+    Route::get('/payments/export', [PaymentsExportController::class, 'export'])->name('admin.payments.export');
     
 });
 
