@@ -112,7 +112,7 @@
                             <a href="{{ route('admin.applications.index') }}" class="nav-link {{ Request::is('admin/applications*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
-                                    Applicants
+                                    Applications
                                 </p>
                             </a>
                         </li>
