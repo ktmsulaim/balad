@@ -158,8 +158,7 @@
                                 decisions and dream of specific goals for the future.</p>
                             <p>Instead of living as addicts to modern technology, Aksharam International Malayalam Academy
                                 strongly believes that there is an urgent need for a generation that can use their potential
-                                to emerge as world leaders. Aksharam is a unique project which delivers five live classes
-                                per week on Malayalam language in scientific methods where the subject experts will be
+                                to emerge as world leaders. Aksharam is a unique project which delivers classes on every weekend on Malayalam language in scientific methods where the subject experts will be
                                 available to support the students. </p>
                         </div>
 

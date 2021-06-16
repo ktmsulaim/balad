@@ -37,7 +37,7 @@
                     <h4>Interactive Live Sessions</h4>
                 </div>
                 <p>The new generation is experiencing the great changes of a rapidly moving world. We are the ones who bring the changes made possible by modern technology to our daily life. Students from all over the world can participate in our live classes through the Zoom application. Interactive live classes are organized to ask questions, seek explanations and learn more from the teachers.</p>
-                <p>Students can enjoy the beauty of the Malayalam language and experience the same feeling while participating in regular classes. Live classes are forty-five minutes long, five days a week. By the end of the course, you will be able to attend more than 400 live classes. Each class is recorded and made available on the students' accounts on the website ‌ so they can listen to the previous classes again and again.</p>
+                <p>Students can enjoy the beauty of the Malayalam language and experience the same feeling while participating in regular classes. Live classes are forty-five minutes long, on every weekend. By the end of the course, you will be able to attend more than 220 live classes. Each class is recorded and made available on the students' accounts on the website ‌ so they can listen to the previous classes again and again.</p>
             </div>
             <div class="col-md-6">
                 <div class="fancy-title title-bottom-border">

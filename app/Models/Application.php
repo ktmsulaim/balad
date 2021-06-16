@@ -15,8 +15,9 @@ class Application extends Model
 
     public $time_preferences = [
         1 => '6:30am to 7:15am',
-        2 => '2:45pm to 3:30pm',
-        3 => '8:30pm to 9:15pm'
+        2 => '10:00am to 10:30am',
+        3 => '2:45pm to 3:30pm',
+        4 => '8:30pm to 9:15pm',
     ];
 
     public function hasPhoto()
