@@ -33,7 +33,7 @@
                             style="font-weight:bold;display:inline-block;min-width:146px">Transaction ID</span>
                         {{ $payment->transaction_id }}</p>
                     <p style="font-size:14px;margin:0 0 0 0;"><span
-                            style="font-weight:bold;display:inline-block;min-width:146px">Order amount</span> 100.00 USD
+                            style="font-weight:bold;display:inline-block;min-width:146px">Order amount</span> 30.00 USD
                     </p>
                 </td>
             </tr>
@@ -76,7 +76,7 @@
             <tr>
                 <td colspan="2" style="padding:15px;">
                     <p style="font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;">
-                        <span style="display:block;font-size:13px;font-weight:normal;">Application / Tuition fee</span> 100
+                        <span style="display:block;font-size:13px;font-weight:normal;">Application / Tuition fee</span> 30
                         USD <b style="font-size:12px;font-weight:300;"> /month</b>
                     </p>
                 </td>

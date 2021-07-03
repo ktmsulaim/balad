@@ -290,7 +290,7 @@
                         <div id="section-pricing" class="heading-block text-center border-bottom-0 page-section"
                             data-onepage-settings="{&quot;offset&quot;:100,&quot;speed&quot;:1250,&quot;easing&quot;:&quot;easeOutQuad&quot;}">
                             <h2>Fee structure</h2>
-                            <span>The course fee is $90 per month. Once the students are admitted to
+                            <span>The course fee is $30 per month. Once the students are admitted to
                                 the programme, we will share them with a user account. Login details
                                 will be sent to the registered mail of the candidates. By the way the
                                 payment gateway will be opened in their user account and they can pay
@@ -328,7 +328,7 @@
                                     As Low as
                                 </div>
                                 <div class="pricing-price">
-                                    <span class="price-unit">$</span>90<span class="price-tenure">monthly</span>
+                                    <span class="price-unit">$</span>30<span class="price-tenure">monthly</span>
                                 </div>
                                 <div class="pricing-action">
                                     <a href="{{ route('aksharam.apply') }}"

@@ -44,15 +44,15 @@
                             Make payment securely with Razorpay
                         </div>
                         <div class="card-body">
-                            <p>Application procssing fee of USD100 for all students is Non-refundable</p>
+                            <p>Application procssing fee of USD30 for all students is Non-refundable</p>
                             <form action="{{ route('aksharam.payment.proccess') }}" method="post" class="m-0">
                                 @csrf
                                 {{-- <button id="rzp-button1" class="button button-rounded">Pay $100</button> --}}
                                 <script src="https://checkout.razorpay.com/v1/checkout.js"
                                             data-key="{{ env('RAZOR_KEY') }}"
-                                            data-amount="10000"
+                                            data-amount="3000"
                                             data-currency="USD"
-                                            data-buttontext="Pay 100 USD"
+                                            data-buttontext="Pay 30 USD"
                                             data-name="Balad International"
                                             data-description="Aksharam International Malayalam Academy"
                                             data-image="{{ asset('img/logo.png') }}"
