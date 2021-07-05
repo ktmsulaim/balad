@@ -76,7 +76,7 @@
             <tr>
                 <td colspan="2" style="padding:15px;">
                     <p style="font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;">
-                        <span style="display:block;font-size:13px;font-weight:normal;">Application / Tuition fee</span> 30
+                        <span style="display:block;font-size:13px;font-weight:normal;">Application fee</span> 30
                         USD <b style="font-size:12px;font-weight:300;"> /month</b>
                     </p>
                 </td>

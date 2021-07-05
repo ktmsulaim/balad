@@ -124,14 +124,14 @@
 
 						<div class="col-md-6 text-center text-md-right">
 							<div class="d-flex justify-content-center justify-content-md-end">
-								<a href="#" class="social-icon si-small si-borderless si-facebook">
+								<a href="https://www.facebook.com/balad.co.in" class="social-icon si-small si-borderless si-facebook">
 									<i class="icon-facebook"></i>
 									<i class="icon-facebook"></i>
 								</a>
 
-								<a href="#" class="social-icon si-small si-borderless si-twitter">
-									<i class="icon-twitter"></i>
-									<i class="icon-twitter"></i>
+								<a href="https://www.instagram.com/balad.co.in" class="social-icon si-small si-borderless si-twitter">
+									<i class="icon-instagram"></i>
+									<i class="icon-instagram"></i>
 								</a>
 
 								<a href="#" class="social-icon si-small si-borderless si-gplus">
