@@ -44,7 +44,7 @@
                             Make payment securely with Razorpay
                         </div>
                         <div class="card-body">
-                            <p>Application procssing fee of USD30 for all students is Non-refundable</p>
+                            {{-- <p>Application procssing fee of USD30 for all students is Non-refundable</p> --}}
                             <form action="{{ route('aksharam.payment.proccess') }}" method="post" class="m-0">
                                 @csrf
                                 {{-- <button id="rzp-button1" class="button button-rounded">Pay $100</button> --}}
